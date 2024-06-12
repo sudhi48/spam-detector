@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Prediction Form</title>
+    <script>
+        // Function to clear the result after 2 minutes
+        setTimeout(function() {
+            document.getElementById('result').innerHTML = '';
+        }, 10000); // 2 minutes in milliseconds
+    </script>
+    <style>
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: calc(100% - 20px); /* Subtract padding from width */
+            max-width: 400px; /* Set maximum width */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            max-width: 200px; /* Set maximum width */
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px; /* Add margin for spacing */
+            margin: auto;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+                <form action="/predict" method="POST">
+            <h1 class="heading">Spam or not</h1>
+            <textarea name="message" id="message" rows="5" placeholder="Enter your message here..."></textarea>
+            <button type="submit">Predict</button>
+        </form>
+        <h1>result:</h1>
+        <div id="result">{{ result }}</div>
+    </div>
+    
+
+</body>
+</html>
